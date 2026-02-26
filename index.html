@@ -10,7 +10,7 @@
 <style>
   :root {
     --forest-deep:#1a2e1a;--forest-mid:#2d4a2d;--forest-light:#4a7c4a;
-    --moss:#6b8f4e;--sage:#9ab87a;--cream:#f5f0e8;
+    --moss:#4a9ecc;--sage:#7bbee0;--cream:#f5f0e8;
     --gold:#c8922a;--gold-light:#e6b85c;--amber:#e07b2a;
     --tsi:#5b8fa8;--tsi-light:#8bbdd4;
   }
@@ -33,7 +33,7 @@
   .main{max-width:1400px;margin:0 auto;padding:48px 60px;}
   .panel{display:none;}.panel.active{display:block;}
   .summary-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:44px;}
-  .summary-card{background:linear-gradient(135deg,var(--forest-mid),rgba(45,74,45,.6));border:1px solid rgba(107,143,78,.25);border-radius:8px;padding:22px 18px;position:relative;overflow:hidden;}
+  .summary-card{background:linear-gradient(135deg,var(--forest-mid),rgba(45,74,45,.6));border:1px solid rgba(74,158,204,.25);border-radius:8px;padding:22px 18px;position:relative;overflow:hidden;}
   .summary-card::after{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold);border-radius:8px 0 0 8px;}
   .summary-card.invest::after{background:var(--tsi);}
   .summary-card.net::after{background:var(--sage);}
@@ -41,36 +41,36 @@
   .sc-value{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;color:var(--cream);line-height:1;}
   .sc-sub{font-size:11px;color:var(--sage);margin-top:5px;font-weight:300;}
   .status-badge{display:inline-block;border-radius:3px;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;}
-  .status-complete,.status-done{background:rgba(74,124,74,.3);color:var(--sage);border:1px solid rgba(107,143,78,.4);}
+  .status-complete,.status-done{background:rgba(74,158,204,.2);color:#7bbee0;border:1px solid rgba(74,158,204,.35);}
   .status-progress,.status-inprogress{background:rgba(200,146,42,.2);color:var(--gold-light);border:1px solid rgba(200,146,42,.4);}
-  .status-closeout{background:rgba(107,143,78,.15);color:#b8d498;border:1px solid rgba(107,143,78,.3);}
+  .status-closeout{background:rgba(74,158,204,.15);color:#b8d498;border:1px solid rgba(74,158,204,.3);}
   .type-badge{display:inline-block;border-radius:3px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;}
   .type-tsi{background:rgba(91,143,168,.25);color:#8bbdd4;border:1px solid rgba(91,143,168,.4);}
   .type-herb{background:rgba(168,91,143,.25);color:#d48bbd;border:1px solid rgba(168,91,143,.4);}
   .type-bridge{background:rgba(143,168,91,.25);color:#bdd48b;border:1px solid rgba(143,168,91,.4);}
-  .section-header{display:flex;align-items:baseline;gap:16px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid rgba(107,143,78,.2);}
+  .section-header{display:flex;align-items:baseline;gap:16px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid rgba(74,158,204,.2);}
   .section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--cream);}
   .section-meta{font-size:11px;color:rgba(245,240,232,.35);font-weight:300;}
   .harvest-table{width:100%;border-collapse:collapse;font-size:13px;}
   .harvest-table thead tr{background:rgba(45,74,45,.8);}
-  .harvest-table th{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sage);padding:11px 14px;text-align:left;border-bottom:1px solid rgba(107,143,78,.3);}
+  .harvest-table th{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sage);padding:11px 14px;text-align:left;border-bottom:1px solid rgba(74,158,204,.2);}
   .harvest-table td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.05);color:rgba(245,240,232,.85);vertical-align:middle;}
   .harvest-table tbody tr{transition:background .15s;cursor:pointer;}
   .harvest-table tbody tr:hover{background:rgba(74,124,74,.12);}
   .col-revenue{font-family:'Playfair Display',serif;font-weight:600;color:var(--gold-light);}
-  .col-net{color:var(--sage);}
+  .col-net{color:#4a9ecc;}
   .col-cost{font-family:'Playfair Display',serif;font-weight:600;color:#8bbdd4;}
   .col-name{font-weight:700;color:var(--cream);}
   .na{color:rgba(245,240,232,.25);font-style:italic;}
   .invest-section{margin-top:44px;}
-  #map{height:640px;border-radius:8px;border:1px solid rgba(107,143,78,.3);overflow:hidden;}
+  #map{height:640px;border-radius:8px;border:1px solid rgba(74,158,204,.3);overflow:hidden;}
   .map-legend{display:flex;gap:28px;margin-top:16px;font-size:13px;color:rgba(245,240,232,.7);align-items:center;flex-wrap:wrap;}
   .legend-swatch{width:26px;height:14px;border-radius:3px;display:inline-block;margin-right:7px;vertical-align:middle;}
   .modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,18,10,.87);backdrop-filter:blur(4px);z-index:1000;align-items:center;justify-content:center;padding:20px;}
   .modal-overlay.open{display:flex;}
-  .modal{background:linear-gradient(160deg,#1e3a1e,#162a16);border:1px solid rgba(107,143,78,.35);border-radius:12px;width:100%;max-width:720px;max-height:90vh;overflow-y:auto;box-shadow:0 40px 80px rgba(0,0,0,.6);animation:modalIn .25s ease;}
+  .modal{background:linear-gradient(160deg,#1e3a1e,#162a16);border:1px solid rgba(74,158,204,.35);border-radius:12px;width:100%;max-width:720px;max-height:90vh;overflow-y:auto;box-shadow:0 40px 80px rgba(0,0,0,.6);animation:modalIn .25s ease;}
   @keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
-  .modal-header{padding:30px 34px 22px;border-bottom:1px solid rgba(107,143,78,.2);position:relative;}
+  .modal-header{padding:30px 34px 22px;border-bottom:1px solid rgba(74,158,204,.2);position:relative;}
   .modal-header .harvest-num{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
   .modal-header h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--cream);line-height:1.1;}
   .modal-header .subtitle{margin-top:8px;font-size:12px;color:var(--sage);font-weight:300;display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
@@ -78,7 +78,7 @@
   .modal-close:hover{color:var(--cream);}
   .modal-body{padding:26px 34px 34px;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .modal-full{grid-column:1/-1;}
-  .mfield{background:rgba(45,74,45,.35);border:1px solid rgba(107,143,78,.2);border-radius:6px;padding:14px 16px;}
+  .mfield{background:rgba(45,74,45,.35);border:1px solid rgba(74,158,204,.2);border-radius:6px;padding:14px 16px;}
   .mf-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);margin-bottom:6px;}
   .mf-value{font-size:13.5px;color:var(--cream);line-height:1.5;}
   .mf-big{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;color:var(--gold-light);}
@@ -88,9 +88,9 @@
   .cost-breakdown{display:flex;flex-direction:column;gap:5px;margin-top:4px;}
   .cost-row{display:flex;justify-content:space-between;font-size:12px;color:rgba(245,240,232,.65);}
   .cost-row span:last-child{color:var(--amber);}
-  .no-photo{height:60px;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(245,240,232,.15);font-style:italic;border:1px solid rgba(107,143,78,.15);border-radius:6px;}
+  .no-photo{height:60px;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(245,240,232,.15);font-style:italic;border:1px solid rgba(74,158,204,.15);border-radius:6px;}
   ::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--forest-deep);}::-webkit-scrollbar-thumb{background:var(--forest-light);border-radius:3px;}
-  .leaflet-tooltip-custom{background:linear-gradient(135deg,#1e3a1e,#162a16)!important;border:1px solid rgba(107,143,78,.4)!important;border-radius:8px!important;padding:12px 16px!important;box-shadow:0 8px 32px rgba(0,0,0,.6)!important;font-family:'Lato',sans-serif!important;}
+  .leaflet-tooltip-custom{background:linear-gradient(135deg,#1a2a3a,#111e2a)!important;border:1px solid rgba(74,158,204,.4)!important;border-radius:8px!important;padding:12px 16px!important;box-shadow:0 8px 32px rgba(0,0,0,.6)!important;font-family:'Lato',sans-serif!important;}
   @media(max-width:900px){.hero,.tabs-bar,.main{padding-left:20px;padding-right:20px;}.hero-inner{flex-direction:column;gap:24px;align-items:flex-start;}.summary-grid{grid-template-columns:1fr 1fr;}.modal-body{grid-template-columns:1fr;}.modal-full{grid-column:1;}}
 </style>
 </head>
@@ -140,8 +140,8 @@
     <h3 class="section-title" style="margin-bottom:18px">Property Map &mdash; New England</h3>
     <div id="map"></div>
     <div class="map-legend">
-      <span><span class="legend-swatch" style="background:rgba(200,146,42,.45);border:2.5px solid #c8922a"></span>Harvest properties</span>
-      <span><span class="legend-swatch" style="background:rgba(107,143,78,.4);border:2.5px solid #6b8f4e"></span>Non-commercial only</span>
+      <span><span class="legend-swatch" style="background:rgba(224,123,42,.45);border:2.5px solid #e07b2a"></span>Harvest properties</span>
+      <span><span class="legend-swatch" style="background:rgba(74,158,204,.4);border:2.5px solid #4a9ecc"></span>Non-commercial only</span>
       <span style="margin-left:auto;font-style:italic;font-size:11px;color:rgba(245,240,232,.4)">Click any boundary to zoom &amp; view details</span>
     </div>
   </div>
@@ -305,7 +305,7 @@ function buildOverview(){
   const tN=HARVESTS.reduce((s,h)=>s+(h.net||0),0);
   const tC=HARVESTS.reduce((s,h)=>s+(h.totalCords||0),0);
   const tAc=HARVESTS.reduce((s,h)=>s+(h.acres||0),0);
-  document.getElementById('overviewTfoot').innerHTML=`<tr style="background:rgba(45,74,45,.6);border-top:2px solid rgba(107,143,78,.4)">
+  document.getElementById('overviewTfoot').innerHTML=`<tr style="background:rgba(45,74,45,.6);border-top:2px solid rgba(74,158,204,.4)">
     <td colspan="4" style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sage);padding:12px 14px">Totals</td>
     <td class="col-revenue" style="font-weight:700">${'$'+tG.toLocaleString('en-US',{maximumFractionDigits:0})}</td>
     <td style="color:var(--amber)">${tFF?'$'+tFF.toLocaleString('en-US',{maximumFractionDigits:0}):'—'}</td>
@@ -345,30 +345,32 @@ let _mapInit=false;
 function initMap(){
   if(_mapInit)return;_mapInit=true;
   _map=L.map('map',{center:[43.4,-70.8],zoom:7,zoomControl:true});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'©OpenStreetMap ©Carto',maxZoom:19}).addTo(_map);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{attribution:'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics',maxZoom:19}).addTo(_map);
+  // Place name labels overlay on top of imagery
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',{attribution:'',maxZoom:19,opacity:0.8}).addTo(_map);
 
-  function makeStyle(col){return{color:col,fillColor:col,fillOpacity:0.28,weight:2.5,opacity:0.95};}
-  function hoverStyle(col){return{color:col,fillColor:col,fillOpacity:0.55,weight:3.5,opacity:1};}
+  function makeStyle(col){return{color:col,fillColor:col,fillOpacity:0.2,weight:3,opacity:1};}
+  function hoverStyle(col){return{color:col,fillColor:col,fillOpacity:0.45,weight:4,opacity:1};}
 
   function tooltipHTML(data){
     // data: {name, type:'harvest'|'invest', gross, net, totalCords, totalCost, acts}
     if(data.type==='harvest'){
       return `<div style="min-width:200px">
-        <div style="font-size:12px;font-weight:700;color:#f5f0e8;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(107,143,78,.3);line-height:1.3">${data.name}</div>
+        <div style="font-size:12px;font-weight:700;color:#f5f0e8;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(74,158,204,.2);line-height:1.3">${data.name}</div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
           <div><div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,.4);margin-bottom:3px">Gross</div><div style="font-size:13px;font-weight:700;color:#e6b85c;font-family:Georgia,serif">${data.gross?'$'+data.gross.toLocaleString():'TBD'}</div></div>
-          <div><div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,.4);margin-bottom:3px">Net</div><div style="font-size:13px;font-weight:700;color:#9ab87a;font-family:Georgia,serif">${data.net?'$'+data.net.toLocaleString():'—'}</div></div>
+          <div><div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,.4);margin-bottom:3px">Net</div><div style="font-size:13px;font-weight:700;color:#4a9ecc;font-family:Georgia,serif">${data.net?'$'+data.net.toLocaleString():'—'}</div></div>
           <div><div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,.4);margin-bottom:3px">Cords</div><div style="font-size:13px;font-weight:700;color:#f5f0e8;font-family:Georgia,serif">${data.totalCords?data.totalCords.toLocaleString():'—'}</div></div>
         </div>
-        ${data.acts&&data.acts.length?`<div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(107,143,78,.2);font-size:10px;color:rgba(91,143,168,.9)">+ ${data.acts.length} non-commercial activit${data.acts.length===1?'y':'ies'}</div>`:''}
+        ${data.acts&&data.acts.length?`<div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(74,158,204,.2);font-size:10px;color:rgba(91,143,168,.9)">+ ${data.acts.length} non-commercial activit${data.acts.length===1?'y':'ies'}</div>`:''}
         <div style="margin-top:8px;font-size:10px;color:rgba(245,240,232,.3);font-style:italic">Click to zoom &amp; view details</div>
       </div>`;
     } else {
       const acts=data.acts||[];
       return `<div style="min-width:200px">
-        <div style="font-size:12px;font-weight:700;color:#f5f0e8;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(107,143,78,.3);line-height:1.3">${data.name}</div>
+        <div style="font-size:12px;font-weight:700;color:#f5f0e8;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(74,158,204,.2);line-height:1.3">${data.name}</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-          <div><div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,.4);margin-bottom:3px">Total Cost</div><div style="font-size:13px;font-weight:700;color:#8bbdd4;font-family:Georgia,serif">$${data.totalCost.toLocaleString()}</div></div>
+          <div><div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,.4);margin-bottom:3px">Total Cost</div><div style="font-size:13px;font-weight:700;color:#4a9ecc;font-family:Georgia,serif">$${data.totalCost.toLocaleString()}</div></div>
           <div><div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,.4);margin-bottom:3px">Activities</div><div style="font-size:13px;font-weight:700;color:#f5f0e8;font-family:Georgia,serif">${acts.length}</div></div>
         </div>
         ${acts.slice(0,2).map(a=>`<div style="margin-top:6px;font-size:10px;color:rgba(245,240,232,.55)">&middot; ${a.name}</div>`).join('')}
@@ -403,7 +405,7 @@ function initMap(){
 
     // Property name label at centroid
     const labelDiv=L.divIcon({className:'',
-      html:`<div style="font-family:'Lato',sans-serif;font-size:10px;font-weight:700;color:rgba(245,240,232,.92);text-shadow:0 1px 3px rgba(0,0,0,1),0 0 10px rgba(0,0,0,1),-1px -1px 0 rgba(0,0,0,.8),1px 1px 0 rgba(0,0,0,.8);pointer-events:none;white-space:nowrap;letter-spacing:0.3px;">${tooltipData.name}</div>`,
+      html:`<div style="font-family:'Lato',sans-serif;font-size:10px;font-weight:700;color:#fff;background:rgba(0,0,0,.55);padding:2px 5px;border-radius:3px;pointer-events:none;white-space:nowrap;letter-spacing:0.3px;">${tooltipData.name}</div>`,
       iconAnchor:[6,8]});
     L.marker(centroid,{icon:labelDiv,interactive:false}).addTo(group);
 
@@ -416,7 +418,7 @@ function initMap(){
     const kml=KML_DATA[h.id];if(!kml)return;
     const ncActs=ACTIVITIES.filter(a=>a.woodlot===h.name);
     const td={type:'harvest',name:h.name,gross:h.gross,net:h.net,totalCords:h.totalCords,acts:ncActs};
-    addPolys(kml.polygons,kml.centroid,'#c8922a','harvest',td,()=>openHarvestModal(h.id));
+    addPolys(kml.polygons,kml.centroid,'#e07b2a','harvest',td,()=>openHarvestModal(h.id));
   });
 
   // Investment-only properties
@@ -425,7 +427,7 @@ function initMap(){
     const acts=ACTIVITIES.filter(a=>a.woodlot===meta.name);
     const totalCost=acts.reduce((s,a)=>s+(a.cost||0),0);
     const td={type:'invest',name:meta.name,totalCost,acts};
-    addPolys(kml.polygons,kml.centroid,'#6b8f4e','invest',td,()=>openInvestOnlyModal(key,meta,acts,totalCost));
+    addPolys(kml.polygons,kml.centroid,'#4a9ecc','invest',td,()=>openInvestOnlyModal(key,meta,acts,totalCost));
   });
 
   // State labels — positioned manually over each state's area
@@ -437,7 +439,7 @@ function initMap(){
   ];
   stateLabels.forEach(s=>{
     L.marker([s.lat,s.lng],{icon:L.divIcon({className:'',
-      html:`<div style="font-family:'Playfair Display',Georgia,serif;font-size:13px;font-style:italic;font-weight:400;color:rgba(245,240,232,.18);letter-spacing:3px;text-transform:uppercase;pointer-events:none;white-space:nowrap;text-shadow:0 1px 3px rgba(0,0,0,.5)">${s.name}</div>`,
+      html:`<div style="font-family:'Playfair Display',Georgia,serif;font-size:14px;font-style:italic;font-weight:700;color:rgba(255,255,255,.55);letter-spacing:3px;text-transform:uppercase;pointer-events:none;white-space:nowrap;text-shadow:0 2px 4px rgba(0,0,0,1),0 0 12px rgba(0,0,0,1)">${s.name}</div>`,
       iconAnchor:[40,10]}),interactive:false}).addTo(_map);
   });
 }
